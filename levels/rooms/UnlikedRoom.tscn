@@ -1,15 +1,15 @@
 [gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://levels/BaseRoom.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/Tilesets/EnvironmentTileset.tres" type="TileSet" id=2]
+[ext_resource path="res://assets/tiles/EnvironmentTileset.tres" type="TileSet" id=2]
 [ext_resource path="res://assets/doorNorthBlueClosed.png" type="Texture" id=3]
 [ext_resource path="res://assets/doorEastBlueClosed.png" type="Texture" id=4]
-[ext_resource path="res://enemies/Sleep_Gremlin.tscn" type="PackedScene" id=5]
+[ext_resource path="res://npcs/Sleep_Gremlin.tscn" type="PackedScene" id=5]
 [ext_resource path="res://levels/interactables/clickable/SpriteClickable.tscn" type="PackedScene" id=6]
 [ext_resource path="res://levels/interactables/events/DialogEvent.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/shaders/sprite_uv_control.shader" type="Shader" id=8]
-[ext_resource path="res://enemies/Lamp.tscn" type="PackedScene" id=9]
-[ext_resource path="res://enemies/ImAStove.tscn" type="PackedScene" id=10]
+[ext_resource path="res://npcs/Lamp.tscn" type="PackedScene" id=9]
+[ext_resource path="res://npcs/ImAStove.tscn" type="PackedScene" id=10]
 [ext_resource path="res://levels/noninteractables/Click2MoveGraffiti.tscn" type="PackedScene" id=11]
 [ext_resource path="res://levels/noninteractables/SleepyGraffiti.tscn" type="PackedScene" id=12]
 [ext_resource path="res://levels/noninteractables/SideWallVent.tscn" type="PackedScene" id=13]
@@ -20,7 +20,7 @@
 [ext_resource path="res://levels/noninteractables/Dont.tscn" type="PackedScene" id=18]
 [ext_resource path="res://levels/noninteractables/FaceInGround.tscn" type="PackedScene" id=19]
 [ext_resource path="res://levels/interactables/clickable/CellphoneClickable.tscn" type="PackedScene" id=20]
-[ext_resource path="res://levels/CatLampTalk.tscn" type="PackedScene" id=21]
+[ext_resource path="res://levels/interactables/clickable/CatLampTalk.tscn" type="PackedScene" id=21]
 
 [sub_resource type="ShaderMaterial" id=3]
 resource_local_to_scene = true
@@ -195,15 +195,19 @@ position = Vector2( 30, 33 )
 difficulty = 1
 DIALOG = "LivingRoomEast"
 
-[node name="DialogEvent2" parent="Interactables/DoorWestClickable/EventQueue" index="1" instance=ExtResource( 7 )]
+[node name="DialogEvent3" parent="Interactables/DoorWestClickable/EventQueue" index="1" instance=ExtResource( 7 )]
 difficulty = 2
 DIALOG = "Unopenable"
+
+[node name="DialogEvent2" parent="Interactables/DoorWestClickable/EventQueue" index="2" instance=ExtResource( 7 )]
+difficulty = 3
+DIALOG = "RandomRoom"
 
 [node name="CaffeinePillsClickable" parent="Interactables" index="4" instance=ExtResource( 17 )]
 position = Vector2( 2332, 1284 )
 
 [node name="CoffeeTableClickable" parent="Interactables" index="5" instance=ExtResource( 15 )]
-position = Vector2( 250, 726 )
+position = Vector2( 411, 674 )
 
 [node name="CellphoneClickable" parent="Interactables" index="6" instance=ExtResource( 20 )]
 position = Vector2( 1074, 551 )

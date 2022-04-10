@@ -7,9 +7,9 @@
 [ext_resource path="res://levels/interactables/clickable/SpriteClickable.tscn" type="PackedScene" id=5]
 [ext_resource path="res://levels/interactables/events/DialogEvent.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/shaders/sprite_uv_control.shader" type="Shader" id=7]
-[ext_resource path="res://enemies/Sleep_Gremlin.tscn" type="PackedScene" id=8]
-[ext_resource path="res://enemies/Lamp.tscn" type="PackedScene" id=9]
-[ext_resource path="res://enemies/ImAStove.tscn" type="PackedScene" id=10]
+[ext_resource path="res://npcs/Sleep_Gremlin.tscn" type="PackedScene" id=8]
+[ext_resource path="res://npcs/Lamp.tscn" type="PackedScene" id=9]
+[ext_resource path="res://npcs/ImAStove.tscn" type="PackedScene" id=10]
 [ext_resource path="res://levels/noninteractables/SideWallVent.tscn" type="PackedScene" id=11]
 [ext_resource path="res://levels/noninteractables/PhotoPortrait.tscn" type="PackedScene" id=12]
 [ext_resource path="res://levels/noninteractables/WallJunk.tscn" type="PackedScene" id=13]
@@ -18,7 +18,7 @@
 [ext_resource path="res://levels/noninteractables/FloorRug.tscn" type="PackedScene" id=16]
 [ext_resource path="res://levels/noninteractables/Boots.tscn" type="PackedScene" id=17]
 [ext_resource path="res://levels/interactables/clickable/CellphoneClickable.tscn" type="PackedScene" id=18]
-[ext_resource path="res://levels/CatLampTalk.tscn" type="PackedScene" id=19]
+[ext_resource path="res://levels/interactables/clickable/CatLampTalk.tscn" type="PackedScene" id=19]
 
 [sub_resource type="ShaderMaterial" id=3]
 resource_local_to_scene = true
@@ -71,21 +71,21 @@ tile_data = PoolIntArray( 5, 54, 0, 6, 46, 0, 65541, 55, 0, 65542, 47, 0, 65543,
 position = Vector2( 1679, 297 )
 
 [node name="DoorNorthClickable" parent="Interactables" index="0" instance=ExtResource( 5 )]
-position = Vector2( 1062, 112 )
+position = Vector2( 1210, 191 )
 canHighlight = true
 canClick = true
 
 [node name="Sprite" parent="Interactables/DoorNorthClickable" index="0"]
 material = SubResource( 3 )
-position = Vector2( 160, 12 )
+position = Vector2( 4, -62 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" parent="Interactables/DoorNorthClickable" index="1"]
-position = Vector2( 159, 11 )
+position = Vector2( 3, -63 )
 shape = SubResource( 4 )
 
 [node name="InteractionPosition" parent="Interactables/DoorNorthClickable" index="2"]
-position = Vector2( 164, 103 )
+position = Vector2( 5, 9 )
 
 [node name="DialogEvent" parent="Interactables/DoorNorthClickable/EventQueue" index="0" instance=ExtResource( 6 )]
 difficulty = 1
@@ -122,11 +122,11 @@ position = Vector2( 453, 10 )
 
 [node name="DialogEvent" parent="Interactables/DoorEastClickable/EventQueue" index="0" instance=ExtResource( 6 )]
 difficulty = 1
-DIALOG = "BedRoomEast"
+DIALOG = "BedRoomNorth"
 
 [node name="DialogEvent2" parent="Interactables/DoorEastClickable/EventQueue" index="1" instance=ExtResource( 6 )]
 difficulty = 2
-DIALOG = "BedRoomEast"
+DIALOG = "BedRoomNorth"
 
 [node name="DialogEvent3" parent="Interactables/DoorEastClickable/EventQueue" index="2" instance=ExtResource( 6 )]
 difficulty = 3

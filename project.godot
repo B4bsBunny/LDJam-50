@@ -147,7 +147,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "SleepEnemies",
 "language": "GDScript",
-"path": "res://enemies/Sleep_Gremlin.gd"
+"path": "res://npcs/Sleep_Gremlin.gd"
 }, {
 "base": "Interactable",
 "class": "SpriteClickable",
@@ -249,6 +249,7 @@ Settings="*res://singletons/Settings.gd"
 
 window/size/width=1280
 window/size/height=720
+window/dpi/allow_hidpi=true
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 

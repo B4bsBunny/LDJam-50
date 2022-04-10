@@ -1,7 +1,7 @@
 [gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://levels/BaseRoom.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/tilesets/EnvironmentTileset.tres" type="TileSet" id=2]
+[ext_resource path="res://assets/tiles/EnvironmentTileset.tres" type="TileSet" id=2]
 [ext_resource path="res://assets/doorNorthBlueClosed.png" type="Texture" id=3]
 [ext_resource path="res://assets/doorEastBlueClosed.png" type="Texture" id=4]
 [ext_resource path="res://levels/interactables/clickable/BedClickable.tscn" type="PackedScene" id=5]
@@ -9,8 +9,8 @@
 [ext_resource path="res://levels/interactables/events/DialogEvent.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/shaders/sprite_uv_control.shader" type="Shader" id=8]
 [ext_resource path="res://levels/interactables/clickable/WindowClickable.tscn" type="PackedScene" id=9]
-[ext_resource path="res://enemies/Lamp.tscn" type="PackedScene" id=10]
-[ext_resource path="res://enemies/ImAStove.tscn" type="PackedScene" id=11]
+[ext_resource path="res://npcs/Lamp.tscn" type="PackedScene" id=10]
+[ext_resource path="res://npcs/ImAStove.tscn" type="PackedScene" id=11]
 [ext_resource path="res://levels/interactables/clickable/FloorLampClickable.tscn" type="PackedScene" id=12]
 [ext_resource path="res://levels/interactables/clickable/CurtainsClickable.tscn" type="PackedScene" id=13]
 [ext_resource path="res://levels/interactables/clickable/LightSwitchClickable.tscn" type="PackedScene" id=14]
@@ -23,8 +23,8 @@
 [ext_resource path="res://levels/interactables/clickable/CaffeinePillsClickable.tscn" type="PackedScene" id=21]
 [ext_resource path="res://levels/noninteractables/SideTable.tscn" type="PackedScene" id=22]
 [ext_resource path="res://levels/interactables/clickable/CellphoneClickable.tscn" type="PackedScene" id=23]
-[ext_resource path="res://levels/CatLampTalk.tscn" type="PackedScene" id=24]
-[ext_resource path="res://enemies/Sleep_Gremlin.tscn" type="PackedScene" id=25]
+[ext_resource path="res://levels/interactables/clickable/CatLampTalk.tscn" type="PackedScene" id=24]
+[ext_resource path="res://npcs/Sleep_Gremlin.tscn" type="PackedScene" id=25]
 
 [sub_resource type="ShaderMaterial" id=3]
 resource_local_to_scene = true
@@ -89,21 +89,21 @@ tile_data = PoolIntArray( -196609, 68, 0, 786657, 68, 0 )
 position = Vector2( 876, 239 )
 
 [node name="DoorNorthClickable" parent="Interactables" index="0" instance=ExtResource( 6 )]
-position = Vector2( 339, -18 )
+position = Vector2( 518, 57 )
 canHighlight = true
 canClick = true
 
 [node name="Sprite" parent="Interactables/DoorNorthClickable" index="0"]
 material = SubResource( 3 )
-position = Vector2( 160, 12 )
+position = Vector2( -4, -58 )
 texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" parent="Interactables/DoorNorthClickable" index="1"]
-position = Vector2( 161, 19 )
+position = Vector2( -4, -59 )
 shape = SubResource( 4 )
 
 [node name="InteractionPosition" parent="Interactables/DoorNorthClickable" index="2"]
-position = Vector2( 164, 103 )
+position = Vector2( 9, 18 )
 
 [node name="DialogEvent" parent="Interactables/DoorNorthClickable/EventQueue" index="0" instance=ExtResource( 7 )]
 difficulty = 1
@@ -118,22 +118,22 @@ difficulty = 3
 DIALOG = "RandomRoom"
 
 [node name="DoorEastClickable" parent="Interactables" index="1" instance=ExtResource( 6 )]
-position = Vector2( 512, -94 )
+position = Vector2( 988, 82 )
 canHighlight = true
 canClick = true
 
 [node name="Sprite" parent="Interactables/DoorEastClickable" index="0"]
 material = SubResource( 5 )
-position = Vector2( 476, 124 )
+position = Vector2( 4, -51 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
 
 [node name="CollisionShape2D" parent="Interactables/DoorEastClickable" index="1"]
-position = Vector2( 475.25, 120.313 )
+position = Vector2( 3, -57 )
 shape = SubResource( 6 )
 
 [node name="InteractionPosition" parent="Interactables/DoorEastClickable" index="2"]
-position = Vector2( 443, 193 )
+position = Vector2( -22, 18 )
 
 [node name="EventQueue" parent="Interactables/DoorEastClickable" index="3"]
 position = Vector2( 453, 10 )
@@ -218,7 +218,7 @@ difficulty = 3
 DIALOG = "RandomRoom"
 
 [node name="BedClickable" parent="Interactables" index="4" instance=ExtResource( 5 )]
-position = Vector2( 1042, -74 )
+position = Vector2( 1168, 230 )
 
 [node name="LightSwitchClickable" parent="Interactables" index="5" instance=ExtResource( 14 )]
 position = Vector2( 873, 6 )
@@ -248,20 +248,20 @@ position = Vector2( 1316, 219 )
 [node name="CatLampTalk" parent="Interactables" index="13" instance=ExtResource( 24 )]
 position = Vector2( 1080, 199 )
 
+[node name="CellphoneClickable3" parent="Interactables" index="14" instance=ExtResource( 23 )]
+position = Vector2( 270, 72 )
+
 [node name="ChaseEnemy" parent="." index="4"]
 position = Vector2( 419, 169 )
 
 [node name="Lamp" parent="Difficulty2" index="0" instance=ExtResource( 10 )]
 position = Vector2( 848, 40 )
 
-[node name="CellphoneClickable" parent="Difficulty2" index="1" instance=ExtResource( 23 )]
-position = Vector2( 395, -15 )
-
-[node name="SleepyGraffiti" parent="Difficulty2" index="2" instance=ExtResource( 22 )]
+[node name="SleepyGraffiti" parent="Difficulty2" index="1" instance=ExtResource( 22 )]
 position = Vector2( -8, 71 )
 scale = Vector2( -1, -1 )
 
-[node name="Sleep_Gremlin" parent="Difficulty2" index="3" instance=ExtResource( 25 )]
+[node name="Sleep_Gremlin" parent="Difficulty2" index="2" instance=ExtResource( 25 )]
 position = Vector2( 412, 372 )
 
 [node name="ImAStove" parent="Difficulty3" index="0" instance=ExtResource( 11 )]
@@ -272,8 +272,6 @@ position = Vector2( 357, 120 )
 
 [node name="PeekingRug" parent="." index="8" instance=ExtResource( 18 )]
 position = Vector2( 530, 94 )
-scale = Vector2( 0.75, 0.75 )
-z_index = 1
 
 [node name="FishPoster" parent="." index="9" instance=ExtResource( 16 )]
 position = Vector2( 707, -28 )

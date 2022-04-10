@@ -7,13 +7,16 @@ onready var hitbox := $Hit_Box
 var playerRef
 var delayTimer
 var VELOCITY
-var SPEED := 25.0
+var SPEED := 35.0
 var curSpeed := 25.0
 var speedBonus := 0.0
 var stallCounter := 0.0
 
 var amEating = false
 var amActive = false
+var activating = false
+var activateCount = 0
+var activateDelay = 2
 
 var sprite_dir = "right"			#where we are actually facing. A string for anim
 var facing_dir = Vector2.DOWN	#where we are facing in vector notation
@@ -28,14 +31,23 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	stallCounter += delta
+	if (Settings.curGameState == Settings.GAME_STATES.PLAY or Settings.curGameState == Settings.GAME_STATES.BATTLE) and !amEating and !amActive and Settings.gameOver == false:
+		if activating and !amActive:
+			activateCount += delta
+		if !amActive and activateCount >= activateDelay:
+			amActive = true
+			curSpeed = SPEED + (Settings.roomsExplored * 3.5)
+			show()
+			$RoomEnter.emitting = true
+			$AmbientNoise.play()
 	
-	if stallCounter >= 10:
-		stallCounter = 0.0
-		speedBonus += 3.0
-		speedBonus = clamp(speedBonus, 0.0, 50.0)
-		
-	if (Settings.curGameState == Settings.GAME_STATES.PLAY or Settings.curGameState == Settings.GAME_STATES.BATTLE or Settings.curGameState == Settings.GAME_STATES.DIALOG) and !amEating and amActive and Settings.gameOver == false:
+	if (Settings.curGameState == Settings.GAME_STATES.PLAY or Settings.curGameState == Settings.GAME_STATES.BATTLE) and !amEating and amActive and Settings.gameOver == false:
+		stallCounter += delta
+	
+		if stallCounter >= 10:
+			stallCounter = 0.0
+			speedBonus += 3.0
+			speedBonus = clamp(speedBonus, 0.0, 50.0)
 		
 		if Settings.curGameState == Settings.GAME_STATES.BATTLE or Settings.curGameState == Settings.GAME_STATES.DIALOG:
 			curSpeed = (SPEED + (Settings.roomsExplored * 3)) / 3
@@ -43,7 +55,8 @@ func _process(delta):
 			curSpeed = SPEED + (Settings.roomsExplored * 3) + speedBonus
 		VELOCITY = (playerRef.position - position).normalized() * curSpeed
 		var _collision = move_and_slide(VELOCITY)
-		if position.distance_to(playerRef.position) < 25:
+		
+		if position.distance_to(playerRef.position) < 55:
 			_on_EatTimer_timeout()
 		var walk_dir = VELOCITY.normalized()
 		
@@ -59,12 +72,8 @@ func _process(delta):
 
 
 func activate(delay: int):
-	yield(get_tree().create_timer(delay), "timeout")
-	amActive = true
-	curSpeed = SPEED + (Settings.roomsExplored * 3.5)
-	show()
-	$RoomEnter.emitting = true
-	$AmbientNoise.play()
+	activateDelay = delay
+	activating = true
 
 
 func anim_switch(animation, speed = 1):
@@ -74,14 +83,15 @@ func anim_switch(animation, speed = 1):
 
 
 func _on_Hit_Box_body_entered(body):
-	if body.name == "Player" and !amEating and amActive:
-		body.taking_damage = true
-		Settings.adjust_sanity("-25")
-		Settings.adjust_alertness("50")
-		eatTimer.start()
-		amEating = true
-		$AttackNoise.play()
-		anim_switch('attack', Settings.difficulty)
+	if Settings.curGameState == Settings.GAME_STATES.PLAY or Settings.curGameState == Settings.GAME_STATES.BATTLE:
+		if body.name == "Player" and !amEating and amActive:
+			body.taking_damage = true
+			Settings.adjust_sanity("-25")
+			Settings.adjust_alertness("50")
+			eatTimer.start()
+			amEating = true
+			$AttackNoise.play()
+			anim_switch('attack', Settings.difficulty)
 
 
 func _on_EatTimer_timeout():

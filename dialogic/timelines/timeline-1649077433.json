@@ -1,16 +1,12 @@
 {
 	"events": [
 		{
-			"animation": "1-fade_in.gd",
-			"animation_length": 0.25,
-			"animation_wait": true,
-			"change_mirror_portrait": false,
-			"change_z_index": false,
+			"animation": "[Default]",
+			"animation_length": 0.5,
 			"character": "character-1648902615.json",
 			"event_id": "dialogic_002",
 			"mirror_portrait": false,
 			"portrait": "Default",
-			"portrait_definition": "",
 			"position": {
 				"0": true,
 				"1": false,
@@ -30,9 +26,9 @@
 		{
 			"call_node": {
 				"arguments": [
-					"-50"
+					"-1"
 				],
-				"method_name": "adjust_alertness",
+				"method_name": "adjust_sanity",
 				"target_node_path": "/root/Settings"
 			},
 			"event_id": "dialogic_042"
@@ -43,6 +39,16 @@
 					"50"
 				],
 				"method_name": "adjust_score",
+				"target_node_path": "/root/Settings"
+			},
+			"event_id": "dialogic_042"
+		},
+		{
+			"call_node": {
+				"arguments": [
+					"-10"
+				],
+				"method_name": "adjust_alertness",
 				"target_node_path": "/root/Settings"
 			},
 			"event_id": "dialogic_042"
@@ -60,7 +66,7 @@
 			"volume": 0
 		},
 		{
-			"character": "",
+			"character": "character-1649448009.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
 			"text": "Email responded to!"
