@@ -154,10 +154,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://levels/interactables/clickable/SpriteClickable.gd"
 }, {
-"base": "",
+"base": "StreamPeerGDNative",
 "class": "StreamPeerUnix",
 "language": "NativeScript",
-"path": "res://addons/godot_editor_discord_presence/godot-unix-socket/unix-socket.gdns"
+"path": "res://builds/somnipathy-mac/addons/godot_editor_discord_presence/godot-unix-socket/unix-socket.gdns"
 }, {
 "base": "Reference",
 "class": "URLUtil",
